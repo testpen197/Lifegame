@@ -1,5 +1,4 @@
 import numpy as np
-import os
 import time
 
 # Créer la grille initiale 7x7
