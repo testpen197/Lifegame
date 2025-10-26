@@ -1,4 +1,5 @@
 import numpy as np
+import os
 import time
 
 # Créer la grille initiale 7x7
@@ -26,12 +27,16 @@ def next_generation(g):
             neighbors = count_neighbors(padded, i + 1, j + 1)
             cell = g[i, j]
             
-            # une cellule vivante avec 2 ou 3 voisins survit
-            if cell == 1 and neighbors in [2, 3]:
-                new_g[i, j] = 1
-            # une cellule morte avec 3 voisins naît
-            elif cell == 0 and neighbors == 3:
-                new_g[i, j] = 1
+            if cell == 1:
+                if neighbors == 2 or neighbors == 3:
+                    new_g[i, j] = 1
+                else:
+                    new_g[i, j] = 0
+            else:
+                if neighbors == 3:
+                    new_g[i, j] = 1
+                else:
+                    new_g[i, j] = 0
     
     return new_g
 
